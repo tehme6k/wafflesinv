@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Bottle;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -33,17 +34,27 @@ class ProductController extends Controller
      */
     public function indexByDate()
     {
+
+        $products = DB::table('products')
+        ->join('inventories', 'products.id', '=', 'inventories.product_id')
+        ->select('products.*', 'inventories.total_labels', 'inventories.created_at')
+        ->where('inventories.created_at', '<=', '2023-06-18')
+        ->get();
+
+
         // $products = Product::whereDate('created_at', '<=', '2023-06-18')->orderBy('part_number')->paginate(10);
-        $products = Product::all();
+        // $products = Product::all();
         // $inventory = Inventory::all();
-        $inventory = Inventory::whereDate('created_at', '<=', '2023-06-18')->get();
+        // $inventory = Inventory::whereDate('created_at', '<=', '2023-06-18')->get();
 
 
         // $total_labels = $inventory->sum('total_labels');
         // $total_cost = $inventory->sum('total_cost');
 
-        return view('products.indexbydate',compact('products', 'inventory'))
-                    ->with('i', (request()->input('page', 1) - 1) * 10);
+        return view('products.indexbydate', compact('products'));
+
+        // return view('products.indexbydate',compact('products'))
+        //             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
 

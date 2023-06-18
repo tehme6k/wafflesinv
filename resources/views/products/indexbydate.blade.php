@@ -4,9 +4,9 @@
 
 <ul>
     @foreach($products as $product)
-        <li>{{ $product->name }}</li>
+        <li>{{ $product->name }} - {{ $product->total_labels }}</li>
     @endforeach
 </ul>
-{!! $products->links('pagination::bootstrap-5') !!}
+{{-- {!! $products->links('pagination::bootstrap-5') !!} --}}
 
 @endsection
