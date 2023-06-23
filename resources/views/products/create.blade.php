@@ -1,6 +1,5 @@
-@extends('layout')
-
-@section('content')
+@extends('admin.admin_master')
+@section('admin')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
