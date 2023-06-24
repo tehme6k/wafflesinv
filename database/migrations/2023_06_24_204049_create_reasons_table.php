@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bottles', function (Blueprint $table) {
+        Schema::create('reasons', function (Blueprint $table) {
             $table->id();
-            $table->string('bottle_size')->unique();
-            $table->decimal('label_cost', 11,7);
+            $table->string('reason',100);
             $table->integer('created_by');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bottles');
+        Schema::dropIfExists('reasons');
     }
 };

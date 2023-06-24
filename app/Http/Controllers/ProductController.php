@@ -81,6 +81,8 @@ class ProductController extends Controller
             'location' => 'required',
         ]);
 
+        // dd($request->all);
+
         Product::create($request->all());
 
         return redirect()->route('products.index')

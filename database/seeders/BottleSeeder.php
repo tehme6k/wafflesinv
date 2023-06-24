@@ -21,6 +21,7 @@ class BottleSeeder extends Seeder
                 Bottle::create([
                     "bottle_size" => $data['0'],
                     "label_cost" => $data['1'],
+                    "created_by" => $data['2'],
                 ]);
             }
             $firstline = false;

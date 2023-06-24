@@ -26,6 +26,7 @@ class ProductSeeder extends Seeder
                     "name" => $data['2'],
                     "flavor" => $data['3'],
                     "location" => $data['4'],
+                    "created_by" => 1,
                 ]);
             }
             $firstline = false;

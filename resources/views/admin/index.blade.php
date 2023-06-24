@@ -12,8 +12,8 @@
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Upcube</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+
+                            <li class="breadcrumb-item active">Home</li>
                         </ol>
                     </div>
 
@@ -22,7 +22,7 @@
         </div>
         <!-- end page title -->
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card">
                     <div class="card-body">
@@ -95,10 +95,10 @@
                     </div><!-- end cardbody -->
                 </div><!-- end card -->
             </div><!-- end col -->
-        </div><!-- end row -->
+        </div><!-- end row --> --}}
 
         <div class="row">
-            <div class="col-xl-6">
+            <div class="col-xl-12">
 
                 <div class="card">
                     <div class="card-body pb-0">
@@ -154,7 +154,7 @@
                 </div><!-- end card -->
             </div>
             <!-- end col -->
-            <div class="col-xl-6">
+            {{-- <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body pb-0">
                         <div class="float-end d-none d-md-inline-block">
@@ -199,12 +199,12 @@
                         <div id="column_line_chart" class="apex-charts" dir="ltr"></div>
                     </div>
                 </div><!-- end card -->
-            </div>
+            </div> --}}
             <!-- end col -->
         </div>
         <!-- end row -->
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-8">
                 <div class="card">
                     <div class="card-body">
@@ -395,7 +395,7 @@
                     </div>
                 </div><!-- end card -->
             </div><!-- end col -->
-        </div>
+        </div> --}}
         <!-- end row -->
     </div>
 

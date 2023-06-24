@@ -20,7 +20,11 @@ return new class extends Migration
             $table->string('location');
             $table->foreign('bottle_id')
             ->references('id')->on('bottles')->onDelete('cascade');
+            $table->integer('created_by');
+            // $table->integer('modified_by');
+            $table->integer('deleted_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

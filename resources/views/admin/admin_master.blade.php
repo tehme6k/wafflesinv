@@ -95,6 +95,8 @@
 
         <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
 
+        <script src="{{ asset('backend/assets/libs/parsleyjs/parsley.min.js') }}"></script>
+
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
     </body>
