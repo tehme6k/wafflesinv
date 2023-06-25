@@ -12,13 +12,13 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Edit: {{$product->name}} - {{$product->flavor}}</h4>
+                                    <h4 class="mb-sm-0">Create new reason</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="{{ route('products.index') }}">All Products</a></li>
-                                            <li class="breadcrumb-item active">Edit Product</li>
+                                            <li class="breadcrumb-item"><a href="{{ route('reasons.index') }}">All Reasons</a></li>
+                                            <li class="breadcrumb-item active">New Reason</li>
                                         </ol>
                                     </div>
 
@@ -33,45 +33,32 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <form class="custom-validation" action="{{ route('products.update', $product->id) }}" method="POST">
+                                        <form class="custom-validation" action="{{ route('reasons.store') }}" method="POST">
                                             @csrf
-                                            @method('PUT')
                                             <div class="mb-3">
-                                                <label>Part Number:</label>
-                                                <input type="text" name="part_number" value="{{$product->part_number}}" class="form-control" readonly />
+                                                <label>Reason:</label>
+                                                <input type="text" name="reason" class="form-control" required placeholder="Reason"/>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label>Name:</label>
-                                                <input type="text" name="name" value="{{$product->name}}" class="form-control" readonly />
+                                                <label>Action:</label>
+                                                <select name="action"  id="action" class="form-control">
+                                                    <option value="">-- Select Action --</option>
+
+                                                    <option value="add">Add</option>
+                                                    <option value="remove">Remove</option>
+
+                                                </select>
                                             </div>
-
-                                            <div class="mb-3">
-                                                <label>Flavor:</label>
-                                                <input type="text" name="flavor" value="{{$product->flavor}}" class="form-control" readonly />
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label>Location:</label>
-                                                <input type="text" name="location" value="{{$product->location}}" class="form-control" required placeholder="Storage location"/>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label>Bottle size:</label>
-                                                <input type="text" name="flavor" value="{{$product->bottle->bottle_size}}" class="form-control" readonly />
-                                            </div>
-
-
-
 
                                             <div class="mb-0">
                                                 <div>
                                                     <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
                                                         Submit
                                                     </button>
-                                                    {{-- <button type="reset" class="btn btn-secondary waves-effect">
+                                                    <button type="reset" class="btn btn-secondary waves-effect">
                                                         Cancel
-                                                    </button> --}}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>

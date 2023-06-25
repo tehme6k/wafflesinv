@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BottleController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ReasonController;
+use App\Http\Controllers\ProductionController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [TestController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,5 +40,12 @@ Route::resource('bottles', BottleController::class);
 
 Route::get('/inventories/remove', [InventoryController::class, 'remove'])->name('inventories.remove');
 Route::resource('inventories', InventoryController::class);
+
+Route::resource('reasons', ReasonController::class);
+Route::resource('productions', ProductionController::class);
+
+
+
+
 
 require __DIR__.'/auth.php';

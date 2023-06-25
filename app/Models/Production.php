@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Reason extends Model
+class Production extends Model
 {
+
+    protected $fillable = ['product_id' ,'created_by' ,'amount_issued', 'amount_needed', ];
     use HasFactory, SoftDeletes;
-    protected $fillable = ['reason' ,'action' , 'created_by'];
 
-    public function createdBy(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(Product::class);
     }
-
 }

@@ -37,7 +37,11 @@ class BottleController extends Controller
 
         ]);
 
-        Bottle::create($request->all());
+        Bottle::create([
+            'bottle_size' => $request->bottle_size,
+            'label_cost' => $request->label_cost,
+            'created_by' => auth()->user()->id
+        ]);
 
         return redirect()->route('bottles.index')
                         ->with('success','Bottle created successfully.');
@@ -65,11 +69,12 @@ class BottleController extends Controller
     public function update(Request $request, Bottle $bottle)
     {
         $request->validate([
-            'bottle_size' => 'required',
             'label_cost' => 'required',
         ]);
 
-        $bottle->update($request->all());
+        $bottle->update([
+            'label_cost' => $request->label_cost
+        ]);
 
         return redirect()->route('bottles.index')
                         ->with('success','Bottle updated successfully');

@@ -51,14 +51,84 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label>Labels per roll:</label>
-                                                <input type="text" name="labels_per_roll" class="form-control" required placeholder="Labels/Roll"/>
+                                                <label>Reason:</label>
+                                                <select name="reason_id"  id="reason_id" class="form-control">
+                                                    <option value="">-- Select Reason --</option>
+                                                    @foreach ($reasons as $data)
+                                                    <option value="{{$data->id}}">
+                                                        {{$data->reason}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label>Number of rolls:</label>
-                                                <input type="text" name="number_of_rolls" class="form-control" required placeholder="# of Rolls"/>
+                                                <label>Labels Required: (If production)</label>
+                                                <input type="text" name="labels_required" class="form-control" placeholder="Only use if sending to production"/>
                                             </div>
+
+                                            {{-- label counts A --}}
+                                            <div class="row">
+                                                <div class="mb-3 col-6">
+                                                    <label>Labels per roll:</label>
+                                                    <input type="text" name="labels_per_roll_a" class="form-control" required placeholder="Labels/Roll"/>
+                                                </div>
+
+                                                <div class="mb-3 col-6">
+                                                    <label>Number of rolls:</label>
+                                                    <input type="text" name="number_of_rolls_a" class="form-control" required placeholder="# of Rolls"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- label counts B --}}
+                                            <div class="row">
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="labels_per_roll_b" class="form-control"  placeholder="Labels/Roll"/>
+                                                </div>
+
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="number_of_rolls_b" class="form-control"  placeholder="# of Rolls"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- label counts C --}}
+                                            <div class="row">
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="labels_per_roll_c" class="form-control"  placeholder="Labels/Roll"/>
+                                                </div>
+
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="number_of_rolls_c" class="form-control"  placeholder="# of Rolls"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- label counts D --}}
+                                            <div class="row">
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="labels_per_roll_d" class="form-control"  placeholder="Labels/Roll"/>
+                                                </div>
+
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="number_of_rolls_d" class="form-control"  placeholder="# of Rolls"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- label counts E --}}
+                                            <div class="row">
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="labels_per_roll_e" class="form-control"  placeholder="Labels/Roll"/>
+                                                </div>
+
+                                                <div class="mb-3 col-6">
+                                                    <input type="text" name="number_of_rolls_e" class="form-control"  placeholder="# of Rolls"/>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3">
+                                                <label >Description</label>
+                                                <textarea class="form-control" name="description"  rows="2"></textarea>
+                                              </div>
 
 
                                             <div class="mb-0">

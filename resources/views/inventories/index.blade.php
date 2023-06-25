@@ -73,7 +73,7 @@
                                             <td>{{ $inventory->created_at->format('m-d-y g:i a') }} ({{ $inventory->created_at->diffForHumans() }}) </td>
 
                                             <td>
-                                                    <a class="btn btn-info" href="{{ route('products.show',$inventory->product->id) }}">Show</a>
+                                                    <a class="btn btn-info" href="{{ route('inventories.show',$inventory->id) }}">Show</a>
                                             </td>
                                         </tr>
                                         @endforeach

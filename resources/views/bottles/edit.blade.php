@@ -1,51 +1,73 @@
-@extends('layout')
+@extends('admin.admin_master')
+@section('admin')
 
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Bottle</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('bottles.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+                <div class="page-content">
+                    <div class="container-fluid">
 
-    <form action="{{ route('bottles.update',$bottle->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0">Edit {{$bottle->bottle_size}} bottle</h4>
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Bottle Size:</strong>
-                    <input type="text" value="{{$bottle->bottle_size}}" name="bottle_size" class="form-control" placeholder="Bottle Size">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="{{ route('bottles.index') }}">All Bottles</a></li>
+                                            <li class="breadcrumb-item active">Edit Bottle</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <form class="custom-validation" action="{{ route('bottles.update', $bottle->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+
+                                            <div class="mb-3">
+                                                <label>Bottle size:</label>
+                                                <input type="text" name="bottle_size" value="{{$bottle->bottle_size}}" class="form-control" readonly />
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label>Label cost:</label>
+                                                <input type="text" name="label_cost" value="{{$bottle->label_cost}}" class="form-control" required placeholder="Label Cost" />
+                                            </div>
+
+                                            <div class="mb-0">
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
+                                                        Submit
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+
+
+                        </div> <!-- end row -->
+
+                    </div> <!-- container-fluid -->
                 </div>
-            </div>
+                <!-- End Page-content -->
 
-         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Label Cost</strong>
-                    <input type="number" value="{{$bottle->label_cost}}" step=".0000001" name="label_cost" class="form-control" placeholder="Label Cost">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            <!-- end main content-->
 
 
-    </form>
 @endsection

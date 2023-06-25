@@ -14,17 +14,19 @@ return new class extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('created_by');
             $table->bigInteger('labels_per_roll');
             $table->bigInteger('number_of_rolls');
             $table->bigInteger('total_labels');
             $table->decimal('total_cost', 10,2);
             $table->unsignedBigInteger('reason_id');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->foreign('product_id')
             ->references('id')->on('products')->onDelete('cascade');
             $table->foreign('reason_id')
             ->references('id')->on('reasons')->onDelete('cascade');
-            $table->integer('created_by');
+            $table->foreign('created_by')
+            ->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -49,11 +49,18 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('inventories.index')}}">Inventory List</a></li>
                         <li><a href="{{route('inventories.create')}}">Adjust Inventory</a></li>
+                        <li><a href="{{ route('productions.index') }}">Labels in production</a></li>
+                        <li><a href="{{route('reasons.index')}}">Reasons List</a></li>
 
                     </ul>
                 </li>
 
-
+                {{-- <li>
+                    <a href="{{route('test.index')}}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span>Test</span>
+                    </a>
+                </li> --}}
 
                 {{-- <li class="menu-title">Pages</li> --}}
 

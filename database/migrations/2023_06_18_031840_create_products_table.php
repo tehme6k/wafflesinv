@@ -14,15 +14,19 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('bottle_id');
+            $table->unsignedBigInteger('created_by');
             $table->bigInteger('part_number')->unique();
             $table->string('name');
             $table->string('flavor');
             $table->string('location');
+            $table->text('notes')->nullable();
             $table->foreign('bottle_id')
             ->references('id')->on('bottles')->onDelete('cascade');
-            $table->integer('created_by');
+            $table->foreign('created_by')
+            ->references('id')->on('users')->onDelete('cascade');
+
             // $table->integer('modified_by');
-            $table->integer('deleted_by')->nullable();
+            // $table->integer('deleted_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

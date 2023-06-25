@@ -14,7 +14,26 @@ class ReasonSeeder extends Seeder
     public function run(): void
     {
         Reason::create([
-            "reason" => "test",
+            "reason" => "New labels",
+            "action" => 'add',
+            "created_by" => 1,
+        ]);
+
+        Reason::create([
+            "reason" => "Replenished",
+            "action" => 'add',
+            "created_by" => 1,
+        ]);
+
+        Reason::create([
+            "reason" => "Sent to production",
+            "action" => 'remove',
+            "created_by" => 1,
+        ]);
+
+        Reason::create([
+            "reason" => "Thrown away",
+            "action" => 'remove',
             "created_by" => 1,
         ]);
     }

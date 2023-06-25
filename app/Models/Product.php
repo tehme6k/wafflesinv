@@ -10,9 +10,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use SoftDeletes;
-    use HasFactory;
-    protected $fillable = ['bottle_id', 'part_number', 'name', 'flavor', 'location'];
+    use HasFactory, SoftDeletes;
+    protected $fillable = [
+        'bottle_id',
+        'created_by'
+        ,'part_number',
+        'name',
+        'flavor',
+        'location'];
 
     public function bottle(): BelongsTo
     {
@@ -22,5 +27,10 @@ class Product extends Model
     public function inventories(): HasMany
     {
         return $this->hasMany(Inventory::class);
+    }
+
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }

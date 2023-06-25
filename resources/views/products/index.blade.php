@@ -45,7 +45,7 @@
                                         <div class="col-lg-12 margin-tb">
 
                                                 <h2>Total Labels: {{ number_format($total_labels) }}</h2>
-                                                <h2>Total Cost: ${{  number_format($total_cost, 2) }}</h2>
+                                                <h2>Total Cost:  ${{  number_format($total_cost, 2) }}</h2>
 
 
                                         </div>
@@ -55,7 +55,7 @@
                                         <thead>
                                         <tr>
                                             <th>Part Number</th>
-                                            <th>Name</th>
+                                            <th>Product</th>
                                             <th>Flavor</th>
                                             <th>Location</th>
                                             <th>Total Inventory</th>
@@ -73,17 +73,8 @@
                                             <td>{{ $product->location }}</td>
                                             <td>{{ number_format($product->inventories->sum('total_labels')) }}</td>
                                             <td>
-                                                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-
-                                                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
-
-                                                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
-
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
+                                                <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                                                <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
                                             </td>
                                         </tr>
                                         @endforeach

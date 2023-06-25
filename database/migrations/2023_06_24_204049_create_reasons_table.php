@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('reasons', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('created_by');
             $table->string('reason',100);
-            $table->integer('created_by');
+            $table->string('action',10);
+            $table->foreign('created_by')
+            ->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

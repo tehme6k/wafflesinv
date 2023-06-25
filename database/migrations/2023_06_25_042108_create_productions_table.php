@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bottles', function (Blueprint $table) {
+        Schema::create('productions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('created_by');
-            $table->string('bottle_size')->unique();
-            $table->decimal('label_cost', 11,7);
-            $table->foreign('created_by')
-            ->references('id')->on('users')->onDelete('cascade');
+            $table->integer('amount_issued');
+            $table->integer('amount_needed')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bottles');
+        Schema::dropIfExists('productions');
     }
 };

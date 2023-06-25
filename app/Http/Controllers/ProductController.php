@@ -83,7 +83,14 @@ class ProductController extends Controller
 
         // dd($request->all);
 
-        Product::create($request->all());
+        Product::create([
+            'bottle_id' => $request->bottle_id,
+            'part_number' => $request->part_number,
+            'name' => $request->name,
+            'flavor' => $request->flavor,
+            'location' => $request->location,
+            'created_by' => auth()->user()->id
+        ]);
 
         return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
@@ -94,9 +101,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $inventories = Inventory::where('product_id', $product->id)->paginate(10);
+        $inventories = Inventory::where('product_id', $product->id)->paginate(5);
         return view('products.show',compact('product', 'inventories'))
-                    ->with('i', (request()->input('page', 1) - 1) * 10);
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -114,14 +121,13 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'bottle_id' => 'required',
-            'part_number' => 'required',
-            'name' => 'required',
-            'flavor' => 'required',
+
             'location' => 'required',
         ]);
 
-        $product->update($request->all());
+        $product->update([
+            'location' => $request->location
+        ]);
 
         return redirect()->route('products.index')
                         ->with('success','Product updated successfully');
